@@ -1,6 +1,6 @@
 ﻿using HygeeaMind.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore; // Necesare pentru EnsureCreatedAsync
+using Microsoft.EntityFrameworkCore; 
 
 namespace HygeeaMind.Utilities
 {
@@ -8,33 +8,26 @@ namespace HygeeaMind.Utilities
     {
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
-            // Obține instanțe ale UserManager și RoleManager din ServiceProvider
             var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
-
-            // Asigură-te că baza de date este creată și migrată (dacă nu s-a întâmplat deja)
-            // Acest lucru este important pentru scenariile de inițializare
-            await context.Database.MigrateAsync(); // Aplică migrațiile la startup
-
+            await context.Database.MigrateAsync(); 
             string adminRoleName = "Admin";
             string userRoleName = "User";
 
-            // Creează rolul "Admin" dacă nu există
             if (await roleManager.FindByNameAsync(adminRoleName) == null)
             {
                 await roleManager.CreateAsync(new IdentityRole(adminRoleName));
             }
 
-            // Creează rolul "User" dacă nu există
             if (await roleManager.FindByNameAsync(userRoleName) == null)
             {
                 await roleManager.CreateAsync(new IdentityRole(userRoleName));
             }
 
-            // Creează un utilizator "admin" și atribuie-i rolul "Admin"
-            string adminEmail = "admin@hygeeamind.com"; // Folosește o adresă de email reală pentru admin
-            string adminPassword = "Password123!"; // Parolă puternică și complexă, NU folosi asta în producție!
+            
+            string adminEmail = "admin@hygeeamind.com"; 
+            string adminPassword = "Password123!"; 
 
             if (await userManager.FindByEmailAsync(adminEmail) == null)
             {
@@ -47,7 +40,7 @@ namespace HygeeaMind.Utilities
                 }
                 else
                 {
-                    // Afișează erorile dacă crearea utilizatorului eșuează
+                    // Afișează erorile dacă crearea utilizatorului nu merge
                     foreach (var error in result.Errors)
                     {
                         Console.WriteLine($"Eroare creare admin: {error.Description}");

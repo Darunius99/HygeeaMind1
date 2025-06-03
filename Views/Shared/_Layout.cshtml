@@ -10,37 +10,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 
     <style>
-        /* Stiluri personalizate pentru a îmbunătăți aspectul și a rezolva problema de background */
+        
         body {
-            background-color: #e9ecef; /* Un fundal ușor gri pentru întregul corp al paginii */
+            background-color: #e9ecef; 
         }
 
         .main-content-area {
-            background-color: #f8f9fa; /* Un fundal alb-deschis pentru zona de conținut principală */
-            padding: 30px; /* Padding uniform de 30px pe toate laturile */
-            min-height: calc(100vh - 150px); /* Asigură că zona principală ocupă cel puțin înălțimea ecranului minus header și footer */
-            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* O umbră subtilă pentru a o separa de fundalul body-ului */
-            border-radius: 0.5rem; /* Colțuri rotunjite */
-            margin-top: 20px; /* Spațiu de la navbar */
-            margin-bottom: 20px; /* Spațiu înainte de footer */
+            background-color: #f8f9fa; 
+            padding: 30px;
+            min-height: calc(100vh - 150px); 
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); 
+            border-radius: 0.5rem; 
+            margin-top: 20px;
+            margin-bottom: 20px; 
         }
 
-        /* Asigură text alb pentru elementele navbar-ului pe fundalul info */
+        
         .navbar-brand,
         .navbar-nav .nav-link {
-            color: #fff !important; /* Text alb pentru link-urile din navbar */
+            color: #fff !important; 
         }
 
             .navbar-nav .nav-link:hover {
-                color: #ccc !important; /* Culoare mai deschisă la hover */
+                color: #ccc !important; 
             }
 
         .footer a {
-            color: #fff !important; /* Link-uri albe în footer */
+            color: #fff !important; 
         }
 
             .footer a:hover {
-                color: #ccc !important; /* Link-uri mai deschise la hover în footer */
+                color: #ccc !important; 
             }
     </style>
 </head>
@@ -101,25 +101,18 @@
 
     <script>
         $(document).ready(function() {
-            // Verificăm dacă suntem pe pagina de Login sau Register, folosind URL-ul
+          
             var currentPath = window.location.pathname;
 
             if (currentPath.includes('/Identity/Account/Login')) {
-                // Pe pagina de Login
-                // Găsește div-ul col-md-6 (care este al doilea div-ul coloană) în rândul principal și îl ascunde.
-                // Această abordare se bazează pe structura clasică a paginii de login Identity.
-                $('.row > div.col-md-6').hide(); // <--- Această linie ascunde secțiunea "Use another account"
-                // Opțional: Lărgește formularul de login local pentru a ocupa tot spațiul
-                // Găsește div-ul col-md-4 (primul div coloană) și îi modifică clasele
+                
+                $('.row > div.col-md-6').hide(); 
                 $('.row > div.col-md-4')
                     .removeClass('col-md-4')
                     .addClass('col-md-12');
             } else if (currentPath.includes('/Identity/Account/Register')) {
-                // Pe pagina de Register
-                // Găsește div-ul col-md-6 (care este al doilea div-ul coloană) în rândul principal și îl ascunde.
-                $('.row > div.col-md-6').hide(); // <--- Această linie ascunde secțiunea "Use another account"
-                // Opțional: Lărgește formularul de register local pentru a ocupa tot spațiul
-                // Găsește div-ul col-md-4 (primul div coloană) și îi modifică clasele
+               
+                $('.row > div.col-md-6').hide(); 
                 $('.row > div.col-md-4')
                     .removeClass('col-md-4')
                     .addClass('col-md-12');

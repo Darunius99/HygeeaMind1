@@ -30,53 +30,46 @@
 @section Scripts {
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
     <script>
-        "use strict"; // Activează modul strict pentru JavaScript
+        "use strict"; 
 
         // Crearea unei conexiuni SignalR la hub-ul nostru
         var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
-
-        // Dezactivează butonul de trimitere până când conexiunea este stabilită
         document.getElementById("sendButton").disabled = true;
 
-        // Definirea funcției "ReceiveMessage" care va fi apelată de server
         connection.on("ReceiveMessage", function (user, message) {
-            var li = document.createElement("li"); // Creează un element list item
-            // Setează conținutul HTML al elementului, incluzând numele utilizatorului și mesajul
+            var li = document.createElement("li"); 
             li.innerHTML = `<small class="text-muted"><b>${user}</b> spune:</small><br />${message}`;
-            document.getElementById("messagesList").appendChild(li); // Adaugă elementul la lista de mesaje
+            document.getElementById("messagesList").appendChild(li); 
 
-            // Derulează automat la ultimul mesaj
             var chatBody = document.querySelector('.card-body');
             chatBody.scrollTop = chatBody.scrollHeight;
         });
 
-        // Pornirea conexiunii la hub-ul SignalR
+       
         connection.start().then(function () {
-            document.getElementById("sendButton").disabled = false; // Activează butonul după conectare
+            document.getElementById("sendButton").disabled = false; 
         }).catch(function (err) {
-            return console.error(err.toString()); // Afișează erori în consolă
+            return console.error(err.toString()); 
         });
 
-        // Adăugarea unui eveniment click pe butonul de trimitere
+        
         document.getElementById("sendButton").addEventListener("click", function (event) {
             var user = document.getElementById("userInput").value;
             var message = document.getElementById("messageInput").value;
-            if (user && message) { // Verifică dacă numele și mesajul nu sunt goale
-                // Apelează metoda "SendMessage" de pe server (definită în ChatHub)
+            if (user && message) { 
                 connection.invoke("SendMessage", user, message).catch(function (err) {
                     return console.error(err.toString());
                 });
-                document.getElementById("messageInput").value = ""; // Golește câmpul de mesaj după trimitere
+                document.getElementById("messageInput").value = ""; 
             } else {
-                alert("Numele și mesajul nu pot fi goale!"); // Alertă dacă câmpurile sunt goale
+                alert("Numele și mesajul nu pot fi goale!"); 
             }
-            event.preventDefault(); // Prevține comportamentul implicit al formularului
+            event.preventDefault(); 
         });
 
-        // Adăugarea unui eveniment "keypress" pentru a trimite mesajul la apăsarea Enter
         document.getElementById("messageInput").addEventListener("keypress", function (event) {
             if (event.key === "Enter") {
-                document.getElementById("sendButton").click(); // Simulează un click pe butonul de trimitere
+                document.getElementById("sendButton").click(); 
             }
         });
     </script>
