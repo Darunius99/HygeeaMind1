@@ -19,13 +19,13 @@ namespace HygeeaMind.Controllers
             _context = context;
         }
 
-        // GET: Specialists
+       
         public async Task<IActionResult> Index()
         {
             return View(await _context.Specialists.ToListAsync());
         }
 
-        // GET: Specialists/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,15 +43,12 @@ namespace HygeeaMind.Controllers
             return View(specialist);
         }
 
-        // GET: Specialists/Create
+        
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Specialists/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Specialty,Description,ProfileImageUrl,Email,PhoneNumber,ExperienceYears")] Specialist specialist)
@@ -65,7 +62,7 @@ namespace HygeeaMind.Controllers
             return View(specialist);
         }
 
-        // GET: Specialists/Edit/5
+        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,9 +78,6 @@ namespace HygeeaMind.Controllers
             return View(specialist);
         }
 
-        // POST: Specialists/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Specialty,Description,ProfileImageUrl,Email,PhoneNumber,ExperienceYears")] Specialist specialist)
@@ -116,7 +110,7 @@ namespace HygeeaMind.Controllers
             return View(specialist);
         }
 
-        // GET: Specialists/Delete/5
+       
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,7 +128,7 @@ namespace HygeeaMind.Controllers
             return View(specialist);
         }
 
-        // POST: Specialists/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

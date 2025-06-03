@@ -40,7 +40,7 @@ namespace HygeeaMind.Utilities
                 }
                 else
                 {
-                    // Afișează erorile dacă crearea utilizatorului nu merge
+                 
                     foreach (var error in result.Errors)
                     {
                         Console.WriteLine($"Eroare creare admin: {error.Description}");

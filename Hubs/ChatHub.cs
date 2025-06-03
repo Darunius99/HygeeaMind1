@@ -15,8 +15,7 @@ namespace HygeeaMind.Hubs
             await base.OnConnectedAsync();
         }
 
-        // Modifică aici: adaugă '?' după 'Exception'
-        public override async Task OnDisconnectedAsync(Exception? exception) // <--- Aici e modificarea
+        public override async Task OnDisconnectedAsync(Exception? exception) 
         {
             await base.OnDisconnectedAsync(exception);
         }

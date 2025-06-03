@@ -1,4 +1,4 @@
-﻿using HygeeaMind.Models; // Adaugă acest using
+﻿using HygeeaMind.Models; 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
